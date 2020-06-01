@@ -5,8 +5,18 @@
 		</header>
 		<main class="musicApp__main">
 			<h1 class="musicApp__main--nameMusicPlay">{{ nameMusicPlay }}</h1>
-			<buttons name="Play" />
-			<buttons name="Pause" />
+			<span class="musicApp__main--btn">
+				<buttons name="Play" />
+				<buttons name="Pause" />
+			</span>
+
+			<section class="musicApp__section2">
+				<h2 class="musicApp__section2--title">The playlist</h2>
+				<span class="musicApp__section2--btn">
+					<buttons :name="nameMusicPlay" />
+					<buttons name="Pause" />
+				</span>
+			</section>
 		</main>
 	</div>
 </template>
@@ -42,6 +52,24 @@ export default {
 	&__main {
 		&--nameMusicPlay {
 			font-size: 18px;
+		}
+		&--btn {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			& button:first-child {
+				margin-right: 6px;
+			}
+		}
+	}
+	&__section2 {
+		&--btn {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			& button {
+				margin-bottom: 4px;
+			}
 		}
 	}
 }

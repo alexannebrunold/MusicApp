@@ -1,6 +1,8 @@
 <template>
 	<div id="button" class="button">
-		<button class="button--style">{{ name }}</button>
+		<button class="button--style" :class="{ toggled: isToggled }" @click="isToggled = !isToggled">
+			{{ name }}
+		</button>
 	</div>
 </template>
 
@@ -8,6 +10,18 @@
 export default {
 	props: {
 		name: String,
+	},
+	data() {
+		return {
+			isToggled: false,
+		}
+	},
+	methods: {
+		desactivate() {
+			if (this.button != this.isToggled) {
+				this.button.disabled
+			}
+		},
 	},
 }
 </script>
@@ -21,6 +35,9 @@ export default {
 		width: auto;
 		border-radius: 8px;
 		border: transparent;
+		&.toggled {
+			background-color: grey;
+		}
 	}
 }
 </style>
